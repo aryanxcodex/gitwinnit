@@ -12,7 +12,7 @@ import {
 const router = express.Router();
 
 router.post("/login", login);
-router.post("/googl-login", googleLogin);
+router.post("/google-login", googleLogin);
 router.post("/signup", signup);
 router.get("/verify/:hash", verifyEmail);
 router.post("/logout", logout);
