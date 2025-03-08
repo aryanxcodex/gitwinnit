@@ -25,8 +25,9 @@ export const deletePost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   try {
-    const { caption, media = null } = req.body;
+    const { caption } = req.body;
     const userId = req.user.id;
+    const media = req.file ? req.file.path : null;
     const newPost = new Post({ userId, caption, media });
     await newPost.save();
     res

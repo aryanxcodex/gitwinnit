@@ -26,6 +26,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
 // Middleware
 app.use(cookieParser());
 app.use(express.json());
+// Serve uploaded files as static resources
+app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 app.use(
