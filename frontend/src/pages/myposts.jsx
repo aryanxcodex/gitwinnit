@@ -2,14 +2,14 @@ import { useState } from 'react';
 import Post from '../components/posts';
 
 const MyPosts = () => {
-  // Assuming the logged-in user is 'John Doe' (Replace with actual auth logic)
-  const loggedInUser = 'John Doe';
+  // Static logged-in user
+  const loggedInUser = 'Aryan Singh';
 
-  // Dummy posts data
+  // Posts state
   const [posts, setPosts] = useState([
     {
       id: 1,
-      username: 'John Doe',
+      username: 'Aryan Singh',
       userAvatar: 'https://randomuser.me/api/portraits/men/1.jpg',
       timestamp: '2 hours ago',
       content: 'Enjoying a beautiful sunset!',
@@ -17,7 +17,7 @@ const MyPosts = () => {
     },
     {
       id: 2,
-      username: 'Jane Smith',
+      username: 'Aryan Singh',
       userAvatar: 'https://randomuser.me/api/portraits/women/2.jpg',
       timestamp: '3 hours ago',
       content: 'Just finished a great book! 📖',
@@ -25,11 +25,19 @@ const MyPosts = () => {
     },
     {
       id: 3,
-      username: 'John Doe',
+      username: 'Aryan Singh',
       userAvatar: 'https://randomuser.me/api/portraits/men/1.jpg',
       timestamp: '1 day ago',
       content: 'Hiking up the mountains! 🏔️',
       image: 'https://source.unsplash.com/random/400x302',
+    },
+    {
+      id: 4,
+      username: 'John Doe',
+      userAvatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      timestamp: '5 hours ago',
+      content: 'Had an amazing coffee today ☕',
+      image: 'https://source.unsplash.com/random/400x303',
     },
   ]);
 

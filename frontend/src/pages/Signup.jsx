@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export default function Signup() {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,17 +17,21 @@ export default function Signup() {
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
+      toast.error('Passwords do not match!');
       return;
     }
 
     try {
-      await axios.post('http://localhost:8000/auth/signup', {
-        email,
-        password,
+      toast.promise(axios.post('http://localhost:8000/auth/signup', { name, email, password }), {
+        loading: 'Creating your account...',
+        success: 'Please verify your emailID. Check your mail 🎉',
+        error: 'Signup failed. Please try again.',
       });
+
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed');
+      toast.error(err.response?.data?.message || 'Signup failed');
     }
   };
 
@@ -41,6 +47,14 @@ export default function Signup() {
             className="w-full p-3 border rounded mb-3"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            className="w-full p-3 border rounded mb-3"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
           <input

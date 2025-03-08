@@ -64,11 +64,11 @@ export default function Landing() {
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-purple-200 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-200/50 bg-white">
-              <img
+              {/* <img
                 src="https://source.unsplash.com/featured/?technology,social"
                 alt="App Preview"
                 className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700"
-              />
+              /> */}
             </div>
           </div>
         </div>

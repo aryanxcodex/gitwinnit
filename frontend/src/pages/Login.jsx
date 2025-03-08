@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import useAuthStore from '../stores/authStore';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -13,13 +15,26 @@ export default function Login() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/auth/login', {
-        email,
-        password,
-      });
-      navigate('/dashboard');
+      const response = await toast.promise(
+        axios.post(
+          'http://localhost:8000/auth/login',
+          { email, password },
+          { withCredentials: true }
+        ),
+        {
+          loading: 'Logging in...',
+          success: 'Login successful! 🚀',
+          error: 'Invalid email or password',
+        }
+      );
+
+      // Update Zustand store with authenticated user
+      useAuthStore.getState().login(response.data.user);
+
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
+      toast.error(err.response?.data?.message || 'Login failed');
     }
   };
 
