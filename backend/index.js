@@ -7,6 +7,9 @@ import cookieParser from "cookie-parser";
 
 // Import route files
 import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+import likeRoutes from "./routes/likeRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 
 // Load env configurations
 dotenv.config();
@@ -48,6 +51,9 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/posts", postRoutes);
+app.use("/posts", likeRoutes);
+app.use("/posts", commentRoutes);
 
 // MongoDB Connection
 mongoose
